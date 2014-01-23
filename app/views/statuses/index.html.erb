@@ -1,25 +1,22 @@
-<h1>Listing statuses</h1>
+<div class="page-header">
+	<h1>All Statuses</h1>
+</div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Content</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<%= link_to("Post a new status", new_status_path, class: "btn btn-primary")%>
+<br></br>
 
-<% @statuses.each do |status| %>
-  <tr>
-    <td><%= status.name %></td>
-    <td><%= status.content %></td>
-    <td><%= link_to 'Show', status %></td>
-    <td><%= link_to 'Edit', edit_status_path(status) %></td>
-    <td><%= link_to 'Destroy', status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+<% @statuses.each do |status|%>
+<div class = "status">
+	<b>Name: <%= status.name %></b>
+	<p> <%= status.content %></p>
+	<div class "meta">
+		<%= link_to(time_ago_in_words(status.created_at) + " ago", status_path(status.id)) %>
+		<span class = "admin">
+			| <%= link_to('Edit', edit_status_path(status)) %> |
+			<%= link_to('Delete', status, method: :delete, data: { confirm: 'Are you sure?' }) %>
+		</span>
+	</div>
+</div>
+<%end%>
 
-<br />
-
-<%= link_to 'New Status', new_status_path %>
+<!-- "link to" is a special helper method that creates an "a tag". It takes multiple arguments. The second argument is itself another helper method. It takes a number as an argument,which refers to an id. Instead of status_path(status.id), we could have just written status. Rails is smart enough to know which status you want to show. We have used the latter way in the "Destroy" link below. -->
