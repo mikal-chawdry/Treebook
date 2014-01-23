@@ -8,4 +8,10 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :profile_name
   # attr_accessible :title, :body
+  
+  has_many :status # We now have the method status available to instances of the User class. If we call @user.statuses it will return an array of all the status objects. 
+  
+  def full_name
+    first_name + " " + last_name
+  end
 end

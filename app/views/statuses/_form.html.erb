@@ -1,4 +1,6 @@
-<%= form_for(@status) do |f| %>
+<%= simple_form_for(@status, html: {class: "form-horizontal", role: "form"}) do |f| %> 
+
+<!-- "form_for is a special helper method, which takes an object and creates a form helper for us. It creates the inputs for us with giving them the proper names and values so we dont have to worry about it." For example on line 16 we created a text area for the property called content. it knows what the content should be because we passed in the instance variable @status to the helper method. Because we have the simple_form gem we have replaced form_for with simple_form_for -->
   <% if @status.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@status.errors.count, "error") %> prohibited this status from being saved:</h2>
@@ -11,15 +13,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
+  <!-- <div class="field">
     <%= f.label :content %><br />
     <%= f.text_area :content %>
-  </div>
+  </div> -->
+	  
+<!-- Above is the form_for version. You can see that by having to create both a label and text_area gets repetitive. Simple_form allows you to write one line and the label of a box and the text areas is created -->
+  <%= f.input :user_id, collection: User.all, label_method: :full_name %> 
+  <%= f.input :content, placeholder: "what would you like to post?" %>
   <div class="actions">
-    <%= f.submit %>
+	  <br>
+    <%= f.button :submit %>
   </div>
 <% end %>
