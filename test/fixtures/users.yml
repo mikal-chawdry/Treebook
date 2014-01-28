@@ -2,4 +2,10 @@ mikal:
    first_name: "Mikal"
    last_name: "Chawdry"
    email: "mikalchawdry@gmail.com"
-   profile_name: "mikal.chawdry"
+   profile_name: "mikal_chawdry"
+
+jim:
+   first_name: "Jim"
+   last_name: "Hoskins"
+   email: "jimhoskins@gmail.com"
+   profile_name: "jim_hoskins"

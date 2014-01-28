@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
                           }
                           
                           
-  has_many :status # We now have the method status available to instances of the User class. If we call @user.statuses it will return an array of all the status objects. 
+  has_many :statuses # We now have the method status available to instances of the User class. If we call @user.statuses it will return an array of all the status objects. 
   
   def full_name
     first_name + " " + last_name
