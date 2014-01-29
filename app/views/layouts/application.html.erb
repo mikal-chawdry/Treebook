@@ -25,9 +25,9 @@
 					<li class="active"><%= link_to("All Statuses", feed_path) %></li>
 					
 					<% if user_signed_in? %>
-					
+					<li class><%= link_to("My Statuses") %></li>
 					<li class ="pull-right"><%= link_to(current_user.full_name, 					edit_user_registration_path) %></li>
-					<li class><%= link_to("Log out", logout_path) %></li>
+					<li class = "pull-right"><%= link_to("Log out", logout_path) %></li>
 					
 					<% else %>
 	            
